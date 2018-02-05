@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Create new recipe</ion-title>
   </ion-navbar>
 
@@ -14,11 +14,10 @@
 
 
 <ion-content padding>
+  <img [src]="image" alt="">
+  <button ion-button clear (click)="takePicture()">Take Picture</button>
 <ion-list>
-<div class="gallery-button" text-left> 
-  <ion-icon name="images" on-tap="getImage()"></ion-icon>
-  <p>+ Add image</p>  
-</div>
+
 
   <ion-item>
     <ion-label stacked>Title</ion-label>
