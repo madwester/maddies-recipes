@@ -15,10 +15,10 @@ import { RecipeProvider } from '../providers/recipe/recipe';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Initialize Firebase
-export const firebaseConfig = {
+export const FIREBASE_CONFIG = {
     apiKey: "AIzaSyAXQDlijCCqD292ZW-6eDpcS_adBtTKgh4",
     authDomain: "recipe-app-59abb.firebaseapp.com",
     databaseURL: "https://recipe-app-59abb.firebaseio.com",
@@ -39,9 +39,9 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
-    //AngularFireAuth
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

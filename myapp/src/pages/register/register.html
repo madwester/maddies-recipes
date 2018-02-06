@@ -6,36 +6,23 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Create an account</ion-title>
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
-<ion-list>
 <ion-item>
-    <ion-label fixed>Name</ion-label>
-    <ion-input type="text" value=""></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label fixed>Email</ion-label>
-    <ion-input type="email" value=""></ion-input>
-  </ion-item>
+  <ion-label floating>Email</ion-label>
+  <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label floating>Password</ion-label>
+  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+</ion-item>
 
-  <ion-item>
-    <ion-label fixed>Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-<ion-item>
-    <ion-label fixed>Retype Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
-</ion-list>
 <div class="column">
-<button ion-button>Create account</button>
-<button ion-button color="secondary">Login</button>
+  <button ion-button (click)="register(user)">Create account</button>
+  <button ion-button (click)="goToLogin()" color="secondary">Login</button>
 </div>
 </ion-content>
-
