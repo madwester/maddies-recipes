@@ -2,8 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Camera } from '@ionic-native/camera';
-//import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { CreatePage } from '../pages/create/create';
@@ -14,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RecipeProvider } from '../providers/recipe/recipe';
 
+import { Camera } from '@ionic-native/camera';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -28,10 +27,10 @@ export const FIREBASE_CONFIG = {
     messagingSenderId: "427671201127"
 };
 
+
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
     LoginPage,
     RegisterPage,
     CreatePage,
@@ -48,7 +47,6 @@ export const FIREBASE_CONFIG = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    //HomePage,
     LoginPage,
     RegisterPage,
     CreatePage,

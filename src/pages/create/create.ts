@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { storage, initializeApp } from 'firebase';
 
 /**
  * Generated class for the CreatePage page.
@@ -16,24 +17,32 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class CreatePage {
   
-  image: string;
-  options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
-  }
-  
   constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams) {
+    initializeApp(FIREBASE_CONFIG);
   }
   
   //tsconfig.json, had to change target to es6
-  async takePicture(): Promise<any>{
+  async takePhoto(){
     try{
-      this.image = await this.camera.getPicture(this.options);
+    //defining camera options
+    const options: CameraOptions = {
+      quality: 50,
+      targetHeight: 600,
+      targetWidth: 600,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true
     }
-    catch(e){
-      console.log(e);
+    const result = await this.camera.getPicture(options);
+    
+    const image = `data:image/jpeg;base64,${result}`;
+    
+    const pictures = storage().ref('pictures');
+    pictures.putString(image, 'data_url');
+    }
+    catch (e) {
+      console.error(e);
     }
   }
   

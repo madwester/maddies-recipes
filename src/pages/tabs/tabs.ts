@@ -10,12 +10,11 @@ import { RegisterPage } from '../register/register';
 })
 export class TabsPage {
 
-  tab1Root = CreatePage;
-  tab2Root = RecipesPage;
+  tab1Root = RecipesPage;
+  tab2Root = CreatePage;
   tab3Root = LoginPage;
   tab4Root = RegisterPage;
   
   constructor() {
-
   }
 }
