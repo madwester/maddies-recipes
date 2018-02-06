@@ -40,7 +40,7 @@ export class CreatePage {
     
     const pictures = storage().ref('pictures');
     pictures.putString(image, 'data_url');
-    }
+    } 
     catch (e) {
       console.error(e);
     }
