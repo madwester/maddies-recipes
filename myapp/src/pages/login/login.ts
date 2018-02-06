@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { TabsPage } from '../tabs/tabs';
+import { Recipe } from '../recipes/recipes';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 /**
@@ -32,7 +32,7 @@ export class LoginPage {
     try{
       const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if(result){
-        this.navCtrl.push(TabsPage);
+        this.navCtrl.push(RecipesPage);
       }
     }
     catch(e){
