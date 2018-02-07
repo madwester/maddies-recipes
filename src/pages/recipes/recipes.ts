@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { storage, initializeApp } from 'firebase';
+import { User } from "../../models/user";
 /**
 
  * Generated class for the RecipesPage page.
@@ -17,9 +17,11 @@ import { storage, initializeApp } from 'firebase';
 })
 export class RecipesPage {
 
+  email: string;
+
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams) {
-      initializeApp(FIREBASE_CONFIG);
+      
   }
 
   ionViewWillLoad() {

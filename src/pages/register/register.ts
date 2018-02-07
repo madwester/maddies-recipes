@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth  } from "angularfire2/auth";
 import { LoginPage } from '../login/login';
@@ -19,22 +19,33 @@ export class RegisterPage {
 
   user = {} as User;
 
-  constructor( private afAuth: AngularFireAuth,
+  constructor(private alertCtrl: AlertController, private afAuth: AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
   }
 
   goToLogin() {
     this.navCtrl.push(LoginPage);
   }
 
-  async register(user: User){
-    try{
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-      console.log(result);
-    }
-    catch(e){
-      console.error(e);
-    }
+  register(user: User){
+      this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+      .then(data =>{
+        console.log('got data ', data);
+        this.alert('Your account has successfully been registered!');
+        this.navCtrl.setRoot(LoginPage);
+      })
+      .catch(error => {
+        console.log('got an error ', error);
+        this.alert(error.message);
+      });
   }
 }
 

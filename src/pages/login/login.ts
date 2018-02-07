@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { RegisterPage } from '../register/register';
 import { User } from "../../models/user";
@@ -20,24 +20,34 @@ export class LoginPage {
   
   user = {} as User;
 
-  constructor(private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, private afAuth: AngularFireAuth, 
+  public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
   
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
+  
   async login(user: User) {
-    try{
-      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-      if(result){
+      this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
+      .then( data => {
+        //user is logged in
+        console.log('got some data', this.afAuth.auth.currentUser);
+        this.alert('Success! You are logged in');
         this.navCtrl.setRoot(TabsPage);
-      }
-    }
-    catch(e){
-      console.error(e);
-    }
+      })
+      .catch( error => {
+        console.log('got an error', error);
+        this.alert(error.message);
+      })
   }
   register() {
     this.navCtrl.push(RegisterPage);

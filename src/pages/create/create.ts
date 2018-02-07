@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { storage, initializeApp } from 'firebase';
+import { storage } from 'firebase';
+//import { storage, initializeApp } from 'firebase';
 
 /**
  * Generated class for the CreatePage page.
@@ -18,7 +19,7 @@ import { storage, initializeApp } from 'firebase';
 export class CreatePage {
   
   constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams) {
-    initializeApp(FIREBASE_CONFIG);
+    //initializeApp(FIREBASE_CONFIG);
   }
   
   //tsconfig.json, had to change target to es6

@@ -16,6 +16,7 @@ import { Camera } from '@ionic-native/camera';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+//import { storage } from 'firebase';
 
 // Initialize Firebase
 export const FIREBASE_CONFIG = {
@@ -41,6 +42,7 @@ export const FIREBASE_CONFIG = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    //storage.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
