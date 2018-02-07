@@ -20,7 +20,7 @@ export class RecipesPage {
   email: string;
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams) { 
       
   }
 
