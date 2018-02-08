@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from "angularfire2/auth";
 import { User } from "../../models/user";
 import { LoginPage } from '../login/login';
-import { AuthProvider } from "../../providers/auth/auth.ts";
+import { AuthProvider } from "../../providers/auth/auth";
 /**
  * Generated class for the ProfilePage page.
  *
