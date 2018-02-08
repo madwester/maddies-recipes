@@ -7,6 +7,9 @@ import { LoginPage } from '../pages/login/login';
 @Component({ 
   templateUrl: 'app.html'
 })
+
+//build something where when user is not logged in, send them to login page!
+
 export class MyApp {
   rootPage:any = LoginPage;
 

@@ -28,7 +28,7 @@ export class RegisterPage {
       title: 'Info!',
       subTitle: message,
       buttons: ['OK']
-    }).present();
+    }).present(); 
   }
 
   goToLogin() {
