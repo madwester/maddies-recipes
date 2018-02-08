@@ -2,8 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { ProfilePage } from '../pages/profile/profile';
 import { LoginPage } from '../pages/login/login';
+import { ProfilePage } from '../pages/profile/profile';
 import { RegisterPage } from '../pages/register/register';
 import { CreatePage } from '../pages/create/create';
 import { RecipesPage } from '../pages/recipes/recipes';
@@ -17,6 +17,7 @@ import { Camera } from '@ionic-native/camera';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AuthProvider } from '../providers/auth/auth';
 //import { storage } from 'firebase';
 
 // Initialize Firebase
@@ -33,8 +34,8 @@ export const FIREBASE_CONFIG = {
 @NgModule({
   declarations: [
     MyApp,
-    ProfilePage,
     LoginPage,
+    ProfilePage,
     RegisterPage,
     CreatePage,
     RecipesPage,
@@ -50,8 +51,8 @@ export const FIREBASE_CONFIG = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ProfilePage,
     LoginPage,
+    ProfilePage,
     RegisterPage,
     CreatePage,
     RecipesPage,
@@ -62,7 +63,8 @@ export const FIREBASE_CONFIG = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RecipeProvider,
-    Camera
+    Camera,
+    AuthProvider
   ]
 })
 export class AppModule {}

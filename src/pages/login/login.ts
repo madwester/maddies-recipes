@@ -40,13 +40,13 @@ export class LoginPage {
       this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
       .then( data => {
         //user is logged in
-        console.log('got some data', this.afAuth.auth.currentUser);
+        console.log('got some data', this.afAuth.auth.currentUser); //currentUser only exist when user is logged in
         this.alert('Success! You are logged in');
         this.navCtrl.setRoot(TabsPage);
       })
       .catch( error => {
         console.log('got an error', error);
-        this.alert(error.message);
+        this.alert(error.message); //contains whatever error comes up 
       })
   }
   register() {

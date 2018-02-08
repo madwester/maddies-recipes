@@ -3,18 +3,29 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ProfilePage } from '../pages/profile/profile';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Component({ 
   templateUrl: 'app.html'
 })
 
-//build something where when user is not logged in, send them to login page!
-
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, afAuth: AngularFireAuth, statusBar: StatusBar, splashScreen: SplashScreen) {
 
+  const authObserver = afAuth.authState.subscribe( user => {
+    if (user) {
+      //user is logged in
+      this.rootPage = TabsPage;
+      authObserver.unsubscribe();
+    } else {
+      this.rootPage = LoginPage;
+      authObserver.unsubscribe();
+    }
+  });
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

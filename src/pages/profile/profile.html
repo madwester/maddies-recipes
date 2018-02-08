@@ -15,4 +15,8 @@
 
 <ion-content padding>
 {{email}}
+<div class="column">
+  <button ion-button (click)="logout()" color="dark">Log Out</button>
+  <button ion-button (click)="user.delete()" color="danger">Delete Account</button>
+</div>
 </ion-content>
