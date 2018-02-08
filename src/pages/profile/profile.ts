@@ -18,7 +18,7 @@ import { AuthProvider } from "../../providers/auth/auth.ts";
 })
 export class ProfilePage {
 
-  email: string;
+  private email: string;    
 
   constructor(private authProvider: AuthProvider, private afAuth: AngularFireAuth, 
   public navCtrl: NavController, public navParams: NavParams) {
