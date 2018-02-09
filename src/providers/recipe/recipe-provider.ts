@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-//import {  Recipe } from '../../models/recipe-model';
+import { Recipe } from '../../models/recipe-model';
+import firebase from 'firebase';
+
 
 /*
   Generated class for the RecipeProvider provider.
@@ -10,12 +12,13 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RecipeProvider {
-  constructor(public http: HttpClient) {
-    console.log('Hello RecipeProvider Provider');
-  }
-  //my function is a member of this class so adding it inside
-  AddRecipe() {
-    
-  }
+  
+  constructor() {}
+              
+  //createRecipe(recipe: Recipe ): void {
+  //  this.recipes.push(recipe)
+  //}
+  
+  
 }
 

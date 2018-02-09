@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from "../../models/user";
 /**
 
@@ -19,12 +18,12 @@ export class RecipesPage {
 
   email: string;
 
-  constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-    public navCtrl: NavController, public navParams: NavParams) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams) { 
       
   }
 
   ionViewWillLoad() {
-    }
+  
   }
+}
 

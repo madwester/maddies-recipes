@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import firebase from 'firebase';
+import { DataProvider } from '../../providers/data/data';
 import { storage } from 'firebase';
-//import { storage, initializeApp } from 'firebase';
+
 
 /**
  * Generated class for the CreatePage page.
@@ -18,8 +21,17 @@ import { storage } from 'firebase';
 })
 export class CreatePage {
   
-  constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams) {
-    //initializeApp(FIREBASE_CONFIG);
+  title: string;
+  notes: string;
+  ingredients: string;
+  
+  constructor(private camera: Camera, 
+  public navCtrl: NavController, public navParams: NavParams, public provider: DataProvider) {
+    
+}
+
+  create(){
+    this.provider.createRecipe(this.title, this.ingredients, this.notes);
   }
   
   //tsconfig.json, had to change target to es6
@@ -46,8 +58,9 @@ export class CreatePage {
       console.error(e);
     }
   }
-  
+    
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePage');
   }
+
 }

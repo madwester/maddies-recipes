@@ -4,8 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
-import { ProfilePage } from '../pages/profile/profile';
-import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({ 
   templateUrl: 'app.html'
@@ -14,7 +13,9 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class MyApp {
   rootPage:any;
 
-  constructor(platform: Platform, afAuth: AngularFireAuth, statusBar: StatusBar, splashScreen: SplashScreen) {
+
+  constructor(platform: Platform, 
+  afAuth: AngularFireAuth, statusBar: StatusBar, splashScreen: SplashScreen) {
 
   const authObserver = afAuth.authState.subscribe( user => {
     if (user) {
@@ -35,4 +36,6 @@ export class MyApp {
       
     });
   }
+
+  
 }

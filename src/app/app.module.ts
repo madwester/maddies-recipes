@@ -11,14 +11,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { RecipeProvider } from '../providers/recipe/recipe';
+import { RecipeProvider } from '../providers/recipe/recipe-provider';
 
 import { Camera } from '@ionic-native/camera';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
-//import { storage } from 'firebase';
+import { DataProvider } from '../providers/data/data';
 
 // Initialize Firebase
 export const FIREBASE_CONFIG = {
@@ -64,7 +65,9 @@ export const FIREBASE_CONFIG = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RecipeProvider,
     Camera,
-    AuthProvider
+    AuthProvider,
+    AngularFireDatabase,
+    DataProvider
   ]
 })
 export class AppModule {}
