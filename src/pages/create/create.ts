@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
 import { DataProvider } from '../../providers/data/data';
 import { storage } from 'firebase';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the CreatePage page.
@@ -25,40 +24,18 @@ export class CreatePage {
   notes: string;
   ingredients: string;
   
-  constructor(private camera: Camera, 
-  public navCtrl: NavController, public navParams: NavParams, public provider: DataProvider) {
+  constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams, public provider: DataProvider) {
     
 }
 
+  photo(){
+    this.provider.takePhoto();
+  }
+   
   create(){
     this.provider.createRecipe(this.title, this.ingredients, this.notes);
   }
   
-  //tsconfig.json, had to change target to es6
-  async takePhoto(){
-    try{
-    //defining camera options
-    const options: CameraOptions = {
-      quality: 50,
-      targetHeight: 600,
-      targetWidth: 600,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      correctOrientation: true
-    }
-    const result = await this.camera.getPicture(options);
-    
-    const image = `data:image/jpeg;base64,${result}`;   
-    
-    const pictures = storage().ref('pictures');
-    pictures.putString(image, 'data_url');
-    } 
-    catch (e) {
-      console.error(e);
-    }
-  }
-    
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePage');
   }
