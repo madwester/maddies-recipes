@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 import { storage } from 'firebase';
@@ -40,13 +39,13 @@ export class DataProvider {
     }
   }
 
-  createRecipe(title: string, ingredients: string, notes: string): void {
+  /*createRecipe(title: string, ingredients: string, notes: string): void {
     const recipeRef: firebase.database.Reference = firebase.database().ref(`/recipe1/`);
     recipeRef.set({
       title, 
       ingredients,
       notes
     })
-  }
+  }*/
 
 }

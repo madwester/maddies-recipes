@@ -32,7 +32,7 @@ export class RegisterPage {
   }
 
   goToLogin() {
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.push('LoginPage');
   }
 
   register(user: User){
@@ -40,7 +40,7 @@ export class RegisterPage {
       .then(data =>{
         console.log('got data ', data);
         this.alert('Your account has successfully been registered!');
-        this.navCtrl.setRoot(LoginPage);
+        this.navCtrl.setRoot('LoginPage');
       })
       .catch(error => {
         console.log('got an error ', error);

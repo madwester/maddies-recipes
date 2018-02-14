@@ -42,7 +42,7 @@ export class LoginPage {
         //user is logged in
         console.log('got some data', this.afAuth.auth.currentUser); //currentUser only exist when user is logged in
         this.alert('Success! You are logged in');
-        this.navCtrl.setRoot(TabsPage);
+        this.navCtrl.setRoot('CreatePage');
       })
       .catch( error => {
         console.log('got an error', error);
@@ -50,6 +50,6 @@ export class LoginPage {
       })
   }
   register() {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push('RegisterPage');
   }
 }

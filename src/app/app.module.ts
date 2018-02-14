@@ -20,6 +20,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
 import { DataProvider } from '../providers/data/data';
+import { RecipesService } from '../services/recipes/recipes.service';
 
 // Initialize Firebase
 export const FIREBASE_CONFIG = {
@@ -34,13 +35,13 @@ export const FIREBASE_CONFIG = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    LoginPage,
-    ProfilePage,
-    RegisterPage,
-    CreatePage,
-    RecipesPage,
-    TabsPage
+    MyApp
+    //LoginPage,
+    //ProfilePage,
+    //RegisterPage,
+    //CreatePage,
+    //RecipesPage,
+    //TabsPage
   ],
   imports: [
     BrowserModule,
@@ -51,13 +52,13 @@ export const FIREBASE_CONFIG = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    LoginPage,
-    ProfilePage,
-    RegisterPage,
-    CreatePage,
-    RecipesPage,
-    TabsPage
+    MyApp
+    //LoginPage,
+    //ProfilePage,
+    //RegisterPage,
+    //CreatePage,
+    //RecipesPage,
+    //TabsPage
   ],
   providers: [
     StatusBar,
@@ -67,7 +68,8 @@ export const FIREBASE_CONFIG = {
     Camera,
     AuthProvider,
     AngularFireDatabase,
-    DataProvider
+    DataProvider,
+    RecipesService 
   ]
 })
 export class AppModule {}

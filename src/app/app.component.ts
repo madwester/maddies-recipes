@@ -11,8 +11,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 
 export class MyApp {
-  rootPage:any;
-
+  //rootPage:any;
+  rootPage: string = 'LoginPage';
 
   constructor(platform: Platform, 
   afAuth: AngularFireAuth, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -20,10 +20,10 @@ export class MyApp {
   const authObserver = afAuth.authState.subscribe( user => {
     if (user) {
       //user is logged in
-      this.rootPage = TabsPage;
+      this.rootPage = 'ProfilePage';
       authObserver.unsubscribe();
     } else {
-      this.rootPage = LoginPage;
+      this.rootPage = 'LoginPage';
       authObserver.unsubscribe();
     }
   });

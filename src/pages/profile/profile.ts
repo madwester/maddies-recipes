@@ -31,6 +31,6 @@ export class ProfilePage {
 
   logout(){
     this.authProvider.logout();
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot('LoginPage');
   }
 }
