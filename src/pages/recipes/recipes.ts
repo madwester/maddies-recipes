@@ -18,8 +18,6 @@ import { Recipe } from '../../models/recipe-model';
   templateUrl: 'recipes.html',
 })
 export class RecipesPage {
-
-  email: string;
   
   recipeList$: Observable<Recipe[]>;
 

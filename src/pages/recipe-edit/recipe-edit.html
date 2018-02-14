@@ -1,5 +1,5 @@
 <!--
-  Generated template for the CreatePage page.
+  Generated template for the RecipeEditPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,17 +7,13 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Create New Recipe</ion-title>
+    <ion-title>{{recipe?.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <img [src]="image" alt="">
-  <button ion-button clear (click)="takePhoto()">Take Picture</button>
-<ion-list>
-
   <ion-item>
     <ion-label stacked>Title</ion-label>
     <ion-input type="text" [(ngModel)]="recipe.title"></ion-input>
@@ -32,8 +28,6 @@
     <ion-label stacked>Notes</ion-label>
     <ion-textarea [(ngModel)]="recipe.notes"></ion-textarea>
   </ion-item>
-
-</ion-list>
-<button ion-button color="secondary" (click)="addRecipe(recipe)">Create Recipe</button>
-<button ion-button color="dark">Reset</button>
+  <button ion-button color="secondary" (click)="saveRecipe(recipe)">Save Recipe</button>
+  <button ion-button color="danger" (click)="deleteRecipe(recipe)">Delete Recipe</button>
 </ion-content>

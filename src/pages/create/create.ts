@@ -4,8 +4,7 @@ import { DataProvider } from '../../providers/data/data';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Recipe } from '../../models/recipe-model';
 import { RecipesService } from '../../services/recipes/recipes.service';
-import { RecipesPage } from '../../pages/recipes/recipes';
-
+import { ToastService } from '../../services/toast/toast.service';
 
 /**
  * Generated class for the CreatePage page.
@@ -27,10 +26,12 @@ export class CreatePage {
     ingredients: ''
   } 
   
-  constructor(private camera: Camera, public navCtrl: NavController, public navParams: NavParams, 
-  public provider: DataProvider, private recipeService: RecipesService) {
-    
-  }
+  constructor(private camera: Camera, 
+  public navCtrl: NavController, 
+  public navParams: NavParams, 
+  public provider: DataProvider, 
+  private recipeService: RecipesService,
+  private toast: ToastService) {}
 
   photo(){
     this.provider.takePhoto();
@@ -42,7 +43,8 @@ export class CreatePage {
   
   addRecipe(recipe: Recipe){
     this.recipeService.addRecipe(recipe).then(ref => {
-              this.navCtrl.setRoot('RecipesPage', { key: ref.key })
+      this.toast.show(`${recipe.title} has been added!`);
+      this.navCtrl.setRoot('RecipesPage', { key: ref.key })
     });
   }
 

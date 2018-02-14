@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { RecipeProvider } from '../providers/recipe/recipe-provider';
 
 import { Camera } from '@ionic-native/camera';
 import { AngularFireModule } from 'angularfire2';
@@ -15,6 +14,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
 import { DataProvider } from '../providers/data/data';
 import { RecipesService } from '../services/recipes/recipes.service';
+import { ToastService } from '../services/toast/toast.service';
 
 // Initialize Firebase
 export const FIREBASE_CONFIG = {
@@ -47,12 +47,12 @@ export const FIREBASE_CONFIG = {
   providers: [
     StatusBar,
     SplashScreen,
-    RecipeProvider,
     Camera,
     AuthProvider,
     AngularFireDatabase,
     DataProvider,
     RecipesService,
+    ToastService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

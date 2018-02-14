@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
-import { RegisterPage } from '../register/register';
 import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 /**
@@ -42,7 +40,7 @@ export class LoginPage {
         //user is logged in
         console.log('got some data', this.afAuth.auth.currentUser); //currentUser only exist when user is logged in
         this.alert('Success! You are logged in');
-        this.navCtrl.setRoot('CreatePage');
+        this.navCtrl.setRoot('ProfilePage');
       })
       .catch( error => {
         console.log('got an error', error);

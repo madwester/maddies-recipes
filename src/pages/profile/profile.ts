@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireAuth } from "angularfire2/auth";
-//import { User } from "../../models/user";
-import { LoginPage } from '../login/login';
-import { AuthProvider } from "../../providers/auth/auth";
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthProvider } from '../../providers/auth/auth';
+import { User } from '../../models/user';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -18,11 +17,11 @@ import { AuthProvider } from "../../providers/auth/auth";
 })
 export class ProfilePage {
 
-  private email: string;    
+  //private email: string;    
 
   constructor(private authProvider: AuthProvider, private afAuth: AngularFireAuth, 
   public navCtrl: NavController, public navParams: NavParams) {
-    this.email = afAuth.auth.currentUser.email;
+    //this.user.email = afAuth.auth.currentUser.email;
   }
 
   ionViewDidLoad() {
