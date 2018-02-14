@@ -2,12 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { ProfilePage } from '../pages/profile/profile';
-import { RegisterPage } from '../pages/register/register';
-import { CreatePage } from '../pages/create/create';
-import { RecipesPage } from '../pages/recipes/recipes';
-import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,12 +30,6 @@ export const FIREBASE_CONFIG = {
 @NgModule({
   declarations: [
     MyApp
-    //LoginPage,
-    //ProfilePage,
-    //RegisterPage,
-    //CreatePage,
-    //RecipesPage,
-    //TabsPage
   ],
   imports: [
     BrowserModule,
@@ -50,26 +38,22 @@ export const FIREBASE_CONFIG = {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+    ],
   entryComponents: [
     MyApp
-    //LoginPage,
-    //ProfilePage,
-    //RegisterPage,
-    //CreatePage,
-    //RecipesPage,
-    //TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     RecipeProvider,
     Camera,
     AuthProvider,
     AngularFireDatabase,
     DataProvider,
-    RecipesService 
+    RecipesService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

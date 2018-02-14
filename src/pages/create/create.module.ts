@@ -4,10 +4,13 @@ import { CreatePage } from './create';
 
 @NgModule({
   declarations: [
-    CreatePage,
+    CreatePage
   ],
   imports: [
-    IonicPageModule.forChild(CreatePage),
+    IonicPageModule.forChild(CreatePage)
   ],
+  exports: [
+    CreatePage  
+  ]
 })
 export class CreatePageModule {}
