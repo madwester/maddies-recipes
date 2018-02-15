@@ -3,18 +3,12 @@ import firebase from 'firebase';
 import { storage } from 'firebase';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-/*
-  Generated class for the DataProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
-export class DataProvider {
+export class ImageService {
 
   constructor(private camera: Camera, ) {}
 
-    //tsconfig.json, had to change target to es6
+  //tsconfig.json, had to change target to es6
   async takePhoto(){
     try{
     //defining camera options
@@ -38,14 +32,4 @@ export class DataProvider {
       console.error(e);
     }
   }
-
-  /*createRecipe(title: string, ingredients: string, notes: string): void {
-    const recipeRef: firebase.database.Reference = firebase.database().ref(`/recipe1/`);
-    recipeRef.set({
-      title, 
-      ingredients,
-      notes
-    })
-  }*/
-
 }

@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ImageService } from '../../services/image/image.service';
 import { Recipe } from '../../models/recipe-model';
 import { RecipesService } from '../../services/recipes/recipes.service';
 import { ToastService } from '../../services/toast/toast.service';
 
-/**
- * Generated class for the CreatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,12 +23,12 @@ export class CreatePage {
   constructor(private camera: Camera, 
   public navCtrl: NavController, 
   public navParams: NavParams, 
-  public provider: DataProvider, 
+  public imageService: ImageService, 
   private recipeService: RecipesService,
   private toast: ToastService) {}
 
   photo(){
-    this.provider.takePhoto();
+    this.imageService.takePhoto();
   }
   
   ionViewDidLoad() {
