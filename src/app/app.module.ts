@@ -11,7 +11,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AuthProvider } from '../providers/auth/auth';
+import { AuthService } from '../services/auth/auth.service';
 import { ImageService } from '../services/image/image.service';
 import { RecipesService } from '../services/recipes/recipes.service';
 import { ToastService } from '../services/toast/toast.service';
@@ -48,7 +48,7 @@ export const FIREBASE_CONFIG = {
     StatusBar,
     SplashScreen,
     Camera,
-    AuthProvider,
+    AuthService,
     AngularFireDatabase,
     ImageService,
     RecipesService,
