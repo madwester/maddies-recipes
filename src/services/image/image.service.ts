@@ -24,8 +24,8 @@ export class ImageService {
     const result = await this.camera.getPicture(options);
     
     const image = `data:image/jpeg;base64,${result}`;   
-    
-    const pictures = storage().ref('pictures');
+    const imageName = 'pictures' + (new Date().getTime());  //this will give it an unique id
+    const pictures = storage().ref(imageName);
     pictures.putString(image, 'data_url');
     } 
     catch (e) {
