@@ -34,7 +34,7 @@ export class CreatePage {
   public imageService: ImageService, 
   private recipeService: RecipesService,
   private toast: ToastService) {
-    this.mypicref=firebase.storage().ref('/')
+    this.mypicref=firebase.storage().ref('/');
   }
 
   takepic(){
@@ -46,7 +46,7 @@ export class CreatePage {
       saveToPhotoAlbum:true
       }).then(imagedata => {
         this.picdata=imagedata;
-        this.upload()
+        this.upload();
       })
   }
 
@@ -55,7 +55,7 @@ export class CreatePage {
     this.mypicref.child(this.uid()).child('pic.png')//creating a new id in function downthere
     .putString(this.picdata,'base64',{contentType:'image/png'})
     .then(savepic => {
-      this.picurl = savepic.downloadURL
+      this.picurl = savepic.downloadURL;
     })
   }
   

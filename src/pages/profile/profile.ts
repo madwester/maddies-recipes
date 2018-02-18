@@ -30,7 +30,8 @@ export class ProfilePage {
   }
 
   logout(){
-    this.authProvider.logout();
+    //this.authProvider.logout();
+    this.afAuth.auth.signOut();
     this.navCtrl.setRoot('LoginPage');
   }
 }

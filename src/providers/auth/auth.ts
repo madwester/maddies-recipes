@@ -6,10 +6,7 @@ export class AuthProvider {
   
   constructor(public afAuth: AngularFireAuth){}
 
-  //user = {} as User;
-
-  /*logout(){
+logout(){
       return this.afAuth.auth.signOut();
-    }*/
-  
-  }
+    }
+}
