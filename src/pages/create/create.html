@@ -14,8 +14,10 @@
 
 
 <ion-content padding>
-  <img [src]="image" alt="">
-  <button ion-button clear (click)="photo()">Take Picture</button>
+  <!--<img [src]="image" alt="">
+  <button ion-button clear (click)="photo()">Take Picture</button>-->
+  <button ion-button outline block (click)="takepic()">Take picture</button>
+  <img src="{{ myPhotoURL }}" />
 <ion-list>
 
   <ion-item>
@@ -34,6 +36,7 @@
   </ion-item>
 
 </ion-list>
+<!--<button ion-button color="secondary" [disabled]="!imageFile" (click)="addRecipe(recipe)">Create Recipe</button>-->
 <button ion-button color="secondary" (click)="addRecipe(recipe)">Create Recipe</button>
 <button ion-button color="dark">Reset</button>
 </ion-content>

@@ -6,10 +6,10 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Injectable()
 export class ImageService {
 
-  constructor(private camera: Camera, ) {}
+  constructor(private camera: Camera) {}
 
   //tsconfig.json, had to change target to es6
-  async takePhoto(){
+  /*async takePhoto(){
     try{
     //defining camera options
     const options: CameraOptions = {
@@ -22,14 +22,18 @@ export class ImageService {
       correctOrientation: true
     }
     const result = await this.camera.getPicture(options);
-    
+    let af = this.af;
     const image = `data:image/jpeg;base64,${result}`;   
     const imageName = 'pictures' + (new Date().getTime());  //this will give it an unique id
     const pictures = storage().ref(imageName);
-    pictures.putString(image, 'data_url');
-    } 
+    pictures.putString(image, 'data_url').then((snapshot) => {
+      let item = snapshot.value();
+      let filename = item.key;
+      return filename;
+    });
+    }
     catch (e) {
       console.error(e);
     }
-  }
+  }*/
 }

@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from "../../models/user";
 import { AngularFireAuth  } from "angularfire2/auth";
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//import { AuthService } from '../../services/auth/auth.service;
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -19,7 +15,7 @@ export class RegisterPage {
   user = {} as User;
 
   constructor(private alertCtrl: AlertController, private afAuth: AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
   }
 
   alert(message: string){
@@ -35,16 +31,17 @@ export class RegisterPage {
   }
 
   register(user: User){
-      this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(data =>{
-        console.log('got data ', data);
-        this.alert('Your account has successfully been registered!');
-        this.navCtrl.setRoot('LoginPage');
-      })
-      .catch(error => {
-        console.log('got an error ', error);
-        this.alert(error.message);
-      });
+    console.log('got data ', data);
+    this.alert('Your account has successfully been registered!');
+    this.navCtrl.setRoot('LoginPage');
+  })
+  .catch(error => {
+    console.log('got an error ', error);
+    this.alert(error.message);
+  });
   }
+
 }
 
