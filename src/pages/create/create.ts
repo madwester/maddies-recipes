@@ -50,7 +50,7 @@ export class CreatePage {
       })
   }
 
-//uploading photo to firebase
+  //uploading photo to firebase
   upload(){
     this.mypicref.child(this.uid()).child('pic.png')//creating a new id in function downthere
     .putString(this.picdata,'base64',{contentType:'image/png'})

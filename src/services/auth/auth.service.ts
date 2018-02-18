@@ -26,15 +26,15 @@ export class AuthService {
   //this should know my user id when I am logged in!
   
   
-  /*alert(message: string){
+ /* alert(message: string){
     this.alertCtrl.create({
       title: 'Info!',
       subTitle: message,
       buttons: ['OK']
     }).present(); 
   }
-  */
-  /*register(user: User){
+  
+  register(user: User){
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(data =>{
         console.log('got data ', data);
@@ -63,6 +63,5 @@ export class AuthService {
   
   logout(){
       return this.afAuth.auth.signOut();
-    }
-*/
+    }*/
 }
