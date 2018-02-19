@@ -42,7 +42,7 @@ doSignup(){
   });
   loader.present();
 
-  this.authProvider.signUpUserService(account).then(authData => {
+  this.authProvider.signUp(account).then(authData => {
     //login was successful
     loader.dismiss();
     that.navCtrl.setRoot('ProfilePage');

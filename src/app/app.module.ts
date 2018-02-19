@@ -1,7 +1,7 @@
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -10,8 +10,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Camera } from '@ionic-native/camera';
 import * as firebase from 'firebase';
-//import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -21,46 +21,37 @@ import { RecipesService } from '../services/recipes/recipes.service';
 import { ToastService } from '../services/toast/toast.service';
 import { AuthProvider } from '../providers/auth/auth';
 
-// Initialize Firebase
-export const FIREBASE_CONFIG = {
-    apiKey: "AIzaSyAXQDlijCCqD292ZW-6eDpcS_adBtTKgh4",
-    authDomain: "recipe-app-59abb.firebaseapp.com",
-    databaseURL: "https://recipe-app-59abb.firebaseio.com",
-    projectId: "recipe-app-59abb",
-    storageBucket: "recipe-app-59abb.appspot.com",
-    messagingSenderId: "427671201127"
-};
+firebase.initializeApp(FIREBASE_CONFIG);
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     HttpModule,
     HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   bootstrap: [
-    IonicApp
+    IonicApp,
     ],
   entryComponents: [
-    MyApp
+    MyApp,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
     AuthProvider,
     AngularFireDatabase,
     ImageService,
     RecipesService,
     ToastService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
