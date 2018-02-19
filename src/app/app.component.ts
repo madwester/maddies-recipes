@@ -3,7 +3,9 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-@Component({ 
+import * as firebase from 'firebase';
+
+@Component({
   templateUrl: 'app.html'
 })
 
@@ -11,8 +13,8 @@ export class MyApp {
   rootPage:any = 'TabsPage';
   //rootPage: string = 'LoginPage';
 
-  constructor(platform: Platform, 
-  statusBar: StatusBar, 
+  constructor(platform: Platform,
+  statusBar: StatusBar,
   splashScreen: SplashScreen) {
 
 /*
@@ -32,9 +34,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      
+
     });
   }
 
-  
+
 }

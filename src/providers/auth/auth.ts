@@ -1,30 +1,54 @@
+//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from '../../models/user';
+//import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+//import { AngularFireAuth } from 'angularfire2/auth';
+//import { User } from '../../models/user';
+
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthProvider {
 
-  constructor(public afAuth: AngularFireAuth
+  public data: any;
+  public fireAuth: any;
+  public userProfile: any;
+
+  constructor(//public http: HttpClient
+              //public afAuth: AngularFireAuth,
               //public alertCtrl: AlertController,
-              //public navCtrl: NavController, 
-              //public navParams: NavParams
-              //public user: User
-              ){}
-  
-  
+              //public navCtrl: NavController,
+              //public navParams: NavParams,
+              //private user: User
+              ){
+              this.fireAuth = firebase.auth();
+              this.userProfile = firebase.database().ref('users');
+            }
+    loginUserService(email: string, password: string): any{
+      return this.fireAuth.signInWithEmailAndPassword(email, password);
+    }
+    signUpUserService(account: {}){
+      return this.fireAuth.createUserWithEmailAndPassword(account['email'], account['password'])
+      .then((newUser) => {
+        this.fireAuth.signInWithEmailAndPassword(account['email'], account['password'])
+        .then((authenticatedUser) => {
+          this.userProfile.child(authenticatedUser.uid).set(account);
+        });
+      });
+    }
+  }
+
+
   //TO DO this should know my user id when I am logged in!!
-  
+
   /*alert(message: string){
     this.alertCtrl.create({
       title: 'Info!',
       subTitle: message,
       buttons: ['OK']
-    }).present(); 
+    }).present();
   }
-  
-  register(user: User){
+/*
+  /*register(user: User){
       this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
       .then(data =>{
         console.log('got data ', data);
@@ -35,9 +59,9 @@ export class AuthProvider {
         console.log('got an error ', error);
         this.alert(error.message);
       });
-  }
-  
-  async login(user: User) {
+  }*/
+
+  /*async login(user: User) {
       this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
       .then( data => {
         //user is logged in
@@ -47,11 +71,10 @@ export class AuthProvider {
       })
       .catch( error => {
         console.log('got an error', error);
-        this.alert(error.message); //contains whatever error comes up 
+        this.alert(error.message); //contains whatever error comes up
       })
   }
-  
+
   logout(){
       return this.afAuth.auth.signOut();
     }*/
-}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { User } from "../../models/user";
+import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController} from 'ionic-angular';
+//import { User } from "../../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
-//import { AuthProvider } from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -10,34 +10,61 @@ import { AngularFireAuth } from "angularfire2/auth";
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  
-  user = {} as User;
 
-  constructor(private alertCtrl: AlertController, 
-              private afAuth: AngularFireAuth, 
-              public navCtrl: NavController, 
-              //private authProvider: AuthProvider,
-              public navParams: NavParams, 
-             
+  //user = {} as User;
+
+  public email: string;
+  public password: string;
+
+  constructor(private alertCtrl: AlertController,
+              //private afAuth: AngularFireAuth,
+              public navCtrl: NavController,
+              public authProvider: AuthProvider,
+              public navParams: NavParams,
+              public toastCtrl: ToastController,
+              public loadingCtrl: LoadingController
               ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  
-  alert(message: string){
-    this.alertCtrl.create({
-      title: 'Info!',
-      subTitle: message,
-      buttons: ['OK']
-    }).present();
+
+  submitLogin(){
+    var that = this;
+
+    //disp popup
+    var loader = this.loadingCtrl.create({
+    content: "Please wait"
+  });
+  loader.present();
+
+  //trying to login user
+  this.authProvider.loginUserService(this.email, this.password).then(authData => {
+  //login was succesful
+  loader.dismiss();
+  that.navCtrl.setRoot('ProfilePage');
+}, error => {
+  loader.dismiss();
+  //no success login
+  let toast = this.toastCtrl.create({
+    message: error,
+    duration: 3000,
+    position: top
+  });
+  toast.present();
+  that.password = "";
+  });
   }
-  
-  /*async login(user) {
-    this.authProvider.login(user);
-  }*/
-  
-  async login(user: User) {
+  //to do
+  forgotPassword(){
+
+  }
+  goToRegister(){
+    this.navCtrl.setRoot('RegisterPage');
+  }
+}
+
+  /*async login(user: User) {
       this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
       .then( data => {
         //user is logged in
@@ -47,11 +74,21 @@ export class LoginPage {
       })
       .catch( error => {
         console.log('got an error', error);
-        this.alert(error.message); //contains whatever error comes up 
+        this.alert(error.message); //contains whatever error comes up
       })
   }
+  alert(message: string){
+    this.alertCtrl.create({
+      title: 'Info!',
+      subTitle: message,
+      buttons: ['OK']
+    }).present();
+  }
 
+  async login(user) {
+    this.authProvider.login(user);
+  }
   register() {
     this.navCtrl.push('RegisterPage');
   }
-}
+  */
